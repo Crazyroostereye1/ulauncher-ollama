@@ -1,0 +1,32 @@
+{
+    "required_api_version": "2",
+    "name": "Ulauncher Ollama",
+    "description": "Ask ollama any question",
+    "developer_name": "Julian Beittel",
+    "icon": "images/icon.png",
+    "options": {
+      "query_debounce": 2
+    },
+    "preferences": [
+      {
+        "id": "kw",
+        "type": "keyword",
+        "name": "Keyword",
+        "description": "Keyword fot Ollama",
+        "default_value": "ol"
+      },
+      {
+        "id" : "dmodel",
+        "type" : "text",
+        "name" : "Default Model",
+        "description": "Model to be used by Ollama",
+        "default_value" : "orca-mini"
+      },
+      {
+        "id" : "url",
+        "type" : "text",
+        "name" : "URL",
+        "default_value" : "http://localhost:11434"
+      }
+    ]
+  }
