@@ -6,7 +6,7 @@ from ulauncher.api.shared.action.RenderResultListAction import RenderResultListA
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
 from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
-import json
+import httpx
 from ollama import Client
 EXTENSION_ICON = 'images/icon.png'
 
@@ -31,7 +31,14 @@ class KeywordQueryEventListener(EventListener):
             ])
         
         client = Client(host=url)
-        response = client.generate(model=extension.preferences["dmodel"], prompt=prompt, stream=False)
+        try:
+            response = client.generate(model=extension.preferences["dmodel"], prompt=prompt, stream=False)
+        except httpx.ConnectError:
+            return RenderResultListAction([
+                ExtensionResultItem(icon=EXTENSION_ICON,
+                                    name='Cant connect to Ollama!',
+                                    on_enter=DoNothingAction())
+            ])
         
         
         return RenderResultListAction([
