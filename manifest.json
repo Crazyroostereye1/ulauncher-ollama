@@ -12,7 +12,7 @@
         "id": "kw",
         "type": "keyword",
         "name": "Keyword",
-        "description": "Keyword fot Ollama",
+        "description": "Keyword for Ollama",
         "default_value": "ol"
       },
       {
